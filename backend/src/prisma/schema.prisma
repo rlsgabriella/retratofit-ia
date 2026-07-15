@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  clerkId  String  @unique
+  email    String  @unique
+  nome     String?
+  photos   Photo[]
+  criadoEm DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Photo {
+  id        String   @id @default(cuid())
+  url       String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis  Analysis?
+  criadaEm DateTime @default(now())
+
+  @@map("photos")
+}
+
+model Analysis {
+  id                String   @id @default(cuid())
+  photoId           String   @unique
+  photo             Photo    @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  resumoTexto       String
+  mudancasDetectadas Boolean
+  regioesComMudanca Json
+  nivelConfianca    String
+  modeloUsado       String
+  criadaEm          DateTime @default(now())
+
+  @@map("analyses")
+}
