@@ -1,0 +1,32 @@
+# Variáveis de ambiente — nunca commitar
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+
+# Dependências
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Build
+dist/
+frontend/dist/
+backend/dist/
+
+# Prisma
+backend/src/prisma/migrations/
+
+# Lock files (opcional — remova as linhas abaixo se quiser versionar)
+# package-lock.json
+
+# SO / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
