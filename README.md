@@ -9,7 +9,7 @@ Em vez de só guardar fotos lado a lado, o RetratoFit IA analisa cada foto e ger
 1. A pessoa tira uma foto pelo app (câmera do próprio celular, direto no navegador).
 2. A foto é enviada pro backend e guardada no Supabase Storage.
 3. O backend chama um modelo de IA (Gemini como primário, com modelo reserva em caso de falha) pra analisar a foto no contexto do histórico da pessoa.
-4. A resposta passa por um verificador de schema antes de chegar no usuário — se o modelo primário falhar ou responder fora do esperado, o sistema tenta automaticamente o próximo modelo da lista, sem o usuário perceber.
+4. A resposta passa por um verificador de schema antes de chegar no usuário, se o modelo primário falhar ou responder fora do esperado, o sistema tenta automaticamente o próximo modelo da lista, sem o usuário perceber.
 5. O resultado aparece na timeline, junto com as fotos anteriores.
 
 ## Stack
